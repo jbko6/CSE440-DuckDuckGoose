@@ -40,31 +40,31 @@ const TeacherDashboardExplorer = () => {
     { 
       title: "Live Overview", 
       desc: "Monitor classroom activity as it happens.",
-      src: "/assets/teacher/Teacher_ Base.png", 
+      src: "/assets/teacher/Teacher_%20Base.png", 
       alt: "Teacher Dashboard Base" 
     },
     { 
       title: "Game Customization", 
       desc: "Tailor game settings to your lesson plan.",
-      src: "/assets/teacher/Teacher_ game options.png", 
+      src: "/assets/teacher/Teacher_%20game%20options.png", 
       alt: "Teacher Game Options" 
     },
     { 
       title: "Content Management", 
       desc: "Update your curriculum content on the fly.",
-      src: "/assets/teacher/Teacher_ Edit Question Bank.png", 
+      src: "/assets/teacher/Teacher_%20Edit%20Question%20Bank.png", 
       alt: "Edit Question Bank" 
     },
     { 
       title: "Performance Analytics", 
       desc: "Review past results to identify learning gaps.",
-      src: "/assets/teacher/Teacher_ Past Game Results.png", 
+      src: "/assets/teacher/Teacher_%20Past%20Game%20Results.png", 
       alt: "Past Game Results" 
     },
     { 
       title: "Student Insights", 
       desc: "Drill down into individual student metrics.",
-      src: "/assets/teacher/Teacher_ Past Game Results-1.png", 
+      src: "/assets/teacher/Teacher_%20Past%20Game%20Results-1.png", 
       alt: "Detailed Performance View" 
     }
   ];
@@ -271,6 +271,239 @@ const MiniGameCard = ({ title, description, color, longDescription, duckColor, i
   );
 };
 
+const ProcessExplorer = () => {
+  const [activeTab, setActiveTab] = useState("research");
+
+  const tabs = [
+    { id: "research", label: "User Research", color: "var(--color-ddg-red)" },
+    { id: "insights", label: "Insights", color: "var(--color-ddg-yellow)" },
+    { id: "ideation", label: "Ideation", color: "var(--color-ddg-blue)" },
+    { id: "storyboarding", label: "Storyboarding", color: "var(--color-ddg-green)" },
+    { id: "prototyping", label: "Prototyping", color: "var(--color-ddg-red)" },
+  ];
+
+  const content = {
+    research: (
+      <div className="space-y-8">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-sm">
+            <h4 className="text-2xl mb-4 text-ddg-red">Summary of Findings</h4>
+            <p className="text-slate-600 leading-relaxed">
+              Our research highlighted a significant gap in student-to-student interaction within existing classroom games. While competition drives engagement, it often leads to isolation and disadvantages students with different learning needs. Key takeaways include the need for deeper collaboration and better accessibility.
+            </p>
+          </div>
+          <div className="bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-sm">
+            <h4 className="text-2xl mb-4 text-ddg-yellow">Survey Data</h4>
+            <p className="text-slate-600 leading-relaxed">
+              We collected 143 responses via Google Forms, reaching diverse communities on Discord and Toyhouse. 48.3% of students reported little to no interaction during games, confirming our hypothesis that current solutions prioritize individual performance over community.
+            </p>
+          </div>
+        </div>
+        
+        <div className="bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-sm">
+          <h4 className="text-2xl mb-4 text-ddg-blue">Stakeholder Interviews</h4>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <h5 className="font-bold mb-2">Student A (Junior)</h5>
+              <p className="text-sm text-slate-500 italic">"I prefer working with my hands... and in groups where I have at least one friend."</p>
+              <p className="text-xs mt-2 text-slate-400">Focuses on hands-on learning and social comfort.</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <h5 className="font-bold mb-2">Student B (Senior)</h5>
+              <p className="text-sm text-slate-500 italic">"Overuse of classroom games quickly leads to boredom."</p>
+              <p className="text-xs mt-2 text-slate-400">High achiever who values variety and meaningful review.</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <h5 className="font-bold mb-2">Teacher A</h5>
+              <p className="text-sm text-slate-500 italic">"Things that work for one class might not work for another."</p>
+              <p className="text-xs mt-2 text-slate-400">Needs customizability to suit diverse classroom cultures.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    insights: (
+      <div className="space-y-8">
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-sm flex flex-col">
+            <div className="w-12 h-12 bg-ddg-red/10 rounded-2xl flex items-center justify-center mb-6">
+              <DuckAsset color="red" className="w-8 h-8" />
+            </div>
+            <h4 className="text-xl font-bold mb-4">Review vs. Learning</h4>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Games are highly effective for memorization and repetition ("gamified flashcards"), but struggle with introducing new content. Our design must prioritize reinforcing existing knowledge while exploring ways to scaffold new concepts.
+            </p>
+          </div>
+          
+          <div className="bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-sm flex flex-col">
+            <div className="w-12 h-12 bg-ddg-yellow/10 rounded-2xl flex items-center justify-center mb-6">
+              <DuckAsset color="yellow" className="w-8 h-8" />
+            </div>
+            <h4 className="text-xl font-bold mb-4">The Competition Gap</h4>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              While 52.4% find competition motivating, 23.1% experience anxiety. Strict timers disadvantage multilingual learners. We need to balance the "fun" of competition with inclusive mechanics that don't distract from the actual content.
+            </p>
+          </div>
+
+          <div className="bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-sm flex flex-col">
+            <div className="w-12 h-12 bg-ddg-blue/10 rounded-2xl flex items-center justify-center mb-6">
+              <DuckAsset color="blue" className="w-8 h-8" />
+            </div>
+            <h4 className="text-xl font-bold mb-4">Interaction = Connection</h4>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Connectedness jumps from 44% to over 91% when students interact deeply. Team-based bonding is the most powerful outcome of classroom play. Our core mission is to foster these student-to-student interactions.
+            </p>
+          </div>
+        </div>
+      </div>
+    ),
+    ideation: (
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="space-y-6">
+          <h4 className="text-4xl font-hanken">Ideation & Sketching</h4>
+          <p className="text-slate-600 leading-relaxed">
+            Our ideation phase focused on breaking the "individual bubble" of classroom games. We explored diverse interaction models—from physical movement to collaborative drawing—on paper to validate mechanics before moving to digital.
+          </p>
+          <ul className="space-y-4">
+            {[
+              "Collaborative vs. Competitive dynamics",
+              "Inclusive timing mechanics",
+              "Teacher control & customizability",
+              "Student-to-student feedback loops"
+            ].map((point, i) => (
+              <li key={i} className="flex items-center gap-3 text-slate-500">
+                <div className="w-1.5 h-1.5 rounded-full bg-ddg-blue"></div>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="relative group">
+          <div className="absolute -inset-4 bg-ddg-blue/5 rounded-[40px] blur-2xl group-hover:bg-ddg-blue/10 transition-colors"></div>
+          <div className="relative bg-white p-4 rounded-[32px] border-2 border-slate-100 shadow-xl">
+            <img 
+              src="/assets/process/sketchboard.png" 
+              alt="Ideation Sketches" 
+              className="w-full h-auto rounded-2xl"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        </div>
+      </div>
+    ),
+    storyboarding: (
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative group order-2 md:order-1">
+          <div className="absolute -inset-4 bg-ddg-green/5 rounded-[40px] blur-2xl group-hover:bg-ddg-green/10 transition-colors"></div>
+          <div className="relative bg-white p-4 rounded-[32px] border-2 border-slate-100 shadow-xl">
+            <img 
+              src="/assets/process/storyboard.png" 
+              alt="Student Journey Storyboard" 
+              className="w-full h-auto rounded-2xl"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        </div>
+        <div className="space-y-6 order-1 md:order-2">
+          <h4 className="text-4xl font-hanken">Visualizing the Journey</h4>
+          <p className="text-slate-600 leading-relaxed">
+            Storyboarding allowed us to map out the emotional and social arc of a classroom session,
+          </p>
+          <p className="text-slate-500 text-sm italic">
+            "We wanted to ensure the game felt like a shared event, not just a series of isolated screens."
+          </p>
+        </div>
+      </div>
+    ),
+    prototyping: (
+      <div className="space-y-12">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <h4 className="text-4xl font-hanken">From Paper to Pixel</h4>
+            <p className="text-slate-600 leading-relaxed">
+              Our prototyping process was an iterative journey of validation.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-ddg-yellow/10 flex items-center justify-center shrink-0">
+                  <span className="font-bold text-ddg-yellow">01</span>
+                </div>
+                <div>
+                  <h5 className="font-bold text-slate-800">Paper Prototyping</h5>
+                  <p className="text-sm text-slate-500">Rapidly testing game rules and physical movements.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-ddg-blue/10 flex items-center justify-center shrink-0">
+                  <span className="font-bold text-ddg-blue">02</span>
+                </div>
+                <div>
+                  <h5 className="font-bold text-slate-800">Figma High-Fidelity</h5>
+                  <p className="text-sm text-slate-500">Translating validated mechanics into a cohesive visual system.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="relative group">
+            <div className="absolute -inset-4 bg-ddg-yellow/5 rounded-[40px] blur-2xl group-hover:bg-ddg-yellow/10 transition-colors"></div>
+            <div className="relative bg-white p-4 rounded-[32px] border-2 border-slate-100 shadow-xl overflow-hidden">
+              <div className="grid grid-cols-2 gap-2">
+                <img 
+                  src="/assets/process/paperprototype.png" 
+                  alt="Paper Prototype" 
+                  className="w-full h-48 object-cover rounded-xl"
+                  referrerPolicy="no-referrer"
+                />
+                <img 
+                  src="/assets/teacher/Teacher_ Base.png" 
+                  alt="Digital UI Prototype" 
+                  className="w-full h-48 object-cover rounded-xl"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="mt-2 text-center">
+                <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Evolution: Low-Fi to High-Fi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  };
+
+  return (
+    <div className="w-full">
+      <div className="flex flex-wrap justify-center gap-2 mb-12">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-6 py-3 rounded-full font-hanken text-sm uppercase tracking-widest transition-all border-2 ${
+              activeTab === tab.id
+                ? "bg-slate-900 text-white border-slate-900 shadow-lg"
+                : "bg-white text-slate-400 border-slate-100 hover:border-slate-200"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+      
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          {content[activeTab as keyof typeof content]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export default function App() {
   React.useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -326,7 +559,7 @@ export default function App() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative z-10"
         >
-          <DuckLogo className="max-w-2xl mx-auto mb-4" />
+          <DuckLogo className="w-full max-w-xl mx-auto mb-4" />
           <p className="text-xl md:text-2xl font-medium text-slate-400 tracking-tight mb-12">
             Connecting Classroom Communities Through Play
           </p>
@@ -397,10 +630,10 @@ export default function App() {
               description="Students brainstorm individually, then collaborate within their groups to pick and refine the best answer."
               longDescription="Justify challenges students to think critically about their own ideas before merging them with the group. It fosters a culture of 'why' over 'what', ensuring that every final answer is backed by collective reasoning."
               images={[
-                { src: "/assets/justify/Justify - Student - Question.png", alt: "Justify Question Screen", caption: "Brainstorming initial ideas individually." },
-                { src: "/assets/justify/Justify - Student - Team.png", alt: "Justify Team Screen", caption: "Teammates review ideas together" },
-                { src: "/assets/justify/Justify - Student - Other Option - Editing.png", alt: "Justify Tean Editing Screen", caption: "Teammates can refine ideas together." },
-                { src: "/assets/justify/Justify - Student - Voting.png", alt: "Justify Voting Screen", caption: "Voting on the best team justification." }
+                { src: "/assets/justify/Justify%20-%20Student%20-%20Question.png", alt: "Justify Question Screen", caption: "Brainstorming initial ideas individually." },
+                { src: "/assets/justify/Justify%20-%20Student%20-%20Team.png", alt: "Justify Team Screen", caption: "Teammates review ideas together" },
+                { src: "/assets/justify/Justify%20-%20Student%20-%20Other%20Option%20-%20Editing.png", alt: "Justify Tean Editing Screen", caption: "Teammates can refine ideas together." },
+                { src: "/assets/justify/Justify%20-%20Student%20-%20Voting.png", alt: "Justify Voting Screen", caption: "Voting on the best team justification." }
               ]}
             />
             <MiniGameCard 
@@ -410,9 +643,9 @@ export default function App() {
               description="Each student is assigned one sentence of a paragraph. Groups must coordinate to create a cohesive whole."
               longDescription="Form Up is the ultimate test of coordination. By giving each student a unique piece of the puzzle, it ensures 100% participation."
               images={[
-                { src: "/assets/form up/Form Up - Student - Question.png", alt: "Form Up Question Screen", caption: "Students individually write one part of a process." },
-                { src: "/assets/form up/Form Up - Student - Formation.png", alt: "Form Up Formation Screen", caption: "Teammates need to be in sync to form a cohesive process." },
-                { src: "/assets/form up/Form Up - Team Responses.png", alt: "Form Up Results Screen", caption: "The best formation is voted upon." }
+                { src: "/assets/form%20up/Form%20Up%20-%20Student%20-%20Question.png", alt: "Form Up Question Screen", caption: "Students individually write one part of a process." },
+                { src: "/assets/form%20up/Form%20Up%20-%20Student%20-%20Formation.png", alt: "Form Up Formation Screen", caption: "Teammates need to be in sync to form a cohesive process." },
+                { src: "/assets/form%20up/Form%20Up%20-%20Team%20Responses.png", alt: "Form Up Results Screen", caption: "The best formation is voted upon." }
               ]}
             />
             <MiniGameCard 
@@ -422,9 +655,9 @@ export default function App() {
               description="Rapid-fire multiple choice where incorrect answers break the blocks your group is standing on."
               longDescription="Stack'd Up brings high-stakes energy to review sessions. It's not just about knowing the answer; it's about trusting your teammates. One wrong move and the whole group falls—literally!"
               images={[
-                { src: "/assets/stack'd up/Stack'd Up - Student - MCQ - 1.png", alt: "Stack'd Up MCQ Screen", caption: "Rapid-fire individual multiple choice." },
-                { src: "/assets/stack'd up/Stack'd Up - Student - MCQ - 1 - Reveal.png", alt: "Stack'd Up Reveal Screen", caption: "Correct answer is revealed" },
-                { src: "/assets/stack'd up/Stack'd Up - Towers.png", alt: "Stack'd Up Towers Screen", caption: "Teammates need to work together to keep their tower tall." }
+                { src: "/assets/stack'd%20up/Stack'd%20Up%20-%20Student%20-%20MCQ%20-%201.png", alt: "Stack'd Up MCQ Screen", caption: "Rapid-fire individual multiple choice." },
+                { src: "/assets/stack'd%20up/Stack'd%20Up%20-%20Student%20-%20MCQ%20-%201%20-%20Reveal.png", alt: "Stack'd Up Reveal Screen", caption: "Correct answer is revealed" },
+                { src: "/assets/stack'd%20up/Stack'd%20Up%20-%20Towers.png", alt: "Stack'd Up Towers Screen", caption: "Teammates need to work together to keep their tower tall." }
               ]}
             />
             <MiniGameCard 
@@ -434,10 +667,10 @@ export default function App() {
               description="A collaborative Pictionary twist involving drawing, guessing, and identifying concepts as a team."
               longDescription="Picture This leverages visual learning. Students must translate abstract concepts into drawings that their teammates can recognize. It's a fun, creative break that reinforces key terminology."
               images={[
-                { src: "/assets/picture this/Picture This - Student Drawing Screen.png", alt: "Picture This Drawing Screen", caption: "Drawing the concept for the team." },
-                { src: "/assets/picture this/Picture This - Student Guessing Screen.png", alt: "Picture This Guessing Screen", caption: "Team members guessing in real-time." },
-                { src: "/assets/picture this/Picture This - Team Vote.png", alt: "Picture This Voting Screen", caption: "Teams submit one strip to the classroom" },
-                { src: "/assets/picture this/Picture This - Results.png", alt: "Picture This Results Screen", caption: "Celebrating creative success." }
+                { src: "/assets/picture%20this/Picture%20This%20-%20Student%20Drawing%20Screen.png", alt: "Picture This Drawing Screen", caption: "Drawing the concept for the team." },
+                { src: "/assets/picture%20this/Picture%20This%20-%20Student%20Guessing%20Screen.png", alt: "Picture This Guessing Screen", caption: "Team members guessing in real-time." },
+                { src: "/assets/picture%20this/Picture%20This%20-%20Team%20Vote.png", alt: "Picture This Voting Screen", caption: "Teams submit one strip to the classroom" },
+                { src: "/assets/picture%20this/Picture%20This%20-%20Results.png", alt: "Picture This Results Screen", caption: "Celebrating creative success." }
               ]}
             />
           </div>
@@ -468,7 +701,7 @@ export default function App() {
                 ].map((item, i) => (
                   <div key={i} className="flex flex-col gap-4">
                     <div className="w-14 h-14 flex-shrink-0 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
-                      <DuckAsset color={item.duck as any} className="w-10 h-8" />
+                      <DuckAsset color={item.duck as any} className="w-10 h-10" />
                     </div>
                     <h4 className="text-xl font-bold">{item.title}</h4>
                     <p className="text-sm text-white/60">{item.desc}</p>
@@ -551,41 +784,14 @@ export default function App() {
       </div>
 
       {/* Design Process */}
-      <div className="bg-ddg-green/5 py-16 border-y border-slate-100 relative overflow-hidden">
+      <div className="bg-ddg-green/5 py-24 border-y border-slate-100 relative overflow-hidden">
         <Section id="process" className="py-0">
-          <div className="text-center mb-10">
+          <div className="text-center mb-16">
             <h2 className="text-6xl mb-4 font-hanken">Our Design Process</h2>
             <p className="text-slate-500 text-xl">From initial sketches to a high-fidelity digital solution.</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              { step: "01", title: "Sketching", duck: "red", desc: "Exploring diverse interaction models and game mechanics on paper.", color: "#F93C4C", image: "/assets/process/sketchboard.png" },
-              { step: "02", title: "Storyboard", duck: "yellow", desc: "Visualizing the student journey and classroom dynamics.", color: "#FFD436", image: "/assets/process/storyboard.png" },
-              { step: "03", title: "Paper Prototype", duck: "green", desc: "Testing core mechanics with physical artifacts to validate collaboration.", color: "#9CC912", image: "/assets/process/paperprototype.png" }
-            ].map((item, i) => (
-              <div key={i} className="group p-8 bg-white rounded-3xl border-2 border-slate-100 hover:border-transparent transition-all relative overflow-hidden flex flex-col">
-                <div className="absolute top-0 right-0 w-24 h-24 translate-x-12 -translate-y-12 rounded-full opacity-10 group-hover:opacity-20 transition-opacity" style={{ backgroundColor: item.color }}></div>
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
-                    <DuckAsset color={item.duck as any} className="w-12 h-12" />
-                  </div>
-                  <div className="h-px flex-1 bg-slate-100"></div>
-                  <span className="text-5xl font-hanken text-slate-100 group-hover:opacity-100 transition-colors" style={{ color: item.color }}>{item.step}</span>
-                </div>
-                <h3 className="text-2xl mb-4 font-hanken">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">{item.desc}</p>
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 p-2">
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProcessExplorer />
         </Section>
       </div>
 
