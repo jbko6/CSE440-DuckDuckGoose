@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, X, ChevronLeft, ChevronRight, Trophy } from "lucide-react";
 
 const DuckLogo = ({ className }: { className?: string }) => (
   <img src="/assets/logo.png" alt="duckduckgoose logo" className={`${className} object-contain`} referrerPolicy="no-referrer" />
@@ -69,8 +69,11 @@ const TeacherDashboardExplorer = () => {
     }
   ];
 
+  const next = () => setActiveIndex((prev) => (prev + 1) % features.length);
+  const prev = () => setActiveIndex((prev) => (prev - 1 + features.length) % features.length);
+
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <div className="relative group">
         <div className="bg-slate-800 rounded-t-xl p-3 flex gap-1.5 border-x border-t border-white/20">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
@@ -81,9 +84,10 @@ const TeacherDashboardExplorer = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
               className="w-full h-full flex items-center justify-center p-4"
             >
               <img 
@@ -94,25 +98,39 @@ const TeacherDashboardExplorer = () => {
               />
             </motion.div>
           </AnimatePresence>
+
+          {/* Navigation Arrows */}
+          <button 
+            onClick={prev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all z-10"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button 
+            onClick={next}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all z-10"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          {/* Feature Info Overlay */}
+          <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent">
+            <h5 className="text-white font-bold text-lg mb-1">{features[activeIndex].title}</h5>
+            <p className="text-white/60 text-sm">{features[activeIndex].desc}</p>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-3">
-        {features.map((feature, i) => (
+      {/* Indicators */}
+      <div className="flex justify-center gap-2">
+        {features.map((_, i) => (
           <button
             key={i}
             onClick={() => setActiveIndex(i)}
-            className={`text-left p-4 rounded-2xl transition-all border ${
-              i === activeIndex 
-                ? 'bg-white/10 border-white/20 shadow-lg' 
-                : 'bg-transparent border-transparent hover:bg-white/5'
+            className={`h-1.5 rounded-full transition-all ${
+              i === activeIndex ? 'w-8 bg-white' : 'w-2 bg-white/20 hover:bg-white/40'
             }`}
-          >
-            <h5 className={`font-bold text-sm mb-1 ${i === activeIndex ? 'text-white' : 'text-white/60'}`}>
-              {feature.title}
-            </h5>
-            <p className="text-xs text-white/40 line-clamp-1">{feature.desc}</p>
-          </button>
+          />
         ))}
       </div>
     </div>
@@ -547,6 +565,7 @@ export default function App() {
             <a href="#teachers" className="hover:text-ddg-blue transition-colors">Teachers</a>
             <a href="#demo" className="hover:text-ddg-blue transition-colors">Demo</a>
             <a href="#process" className="hover:text-ddg-blue transition-colors">Process</a>
+            <a href="#awards" className="hover:text-ddg-blue transition-colors">Awards</a>
           </nav>
         </div>
       </header>
@@ -792,6 +811,52 @@ export default function App() {
           </div>
           
           <ProcessExplorer />
+        </Section>
+      </div>
+
+      {/* Awards Section */}
+      <div id="awards" className="bg-white py-24 border-b border-slate-100 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
+          <div className="absolute top-10 left-10 transform -rotate-12">
+            <Trophy size={120} />
+          </div>
+          <div className="absolute bottom-10 right-10 transform rotate-12">
+            <Trophy size={120} />
+          </div>
+        </div>
+        <Section className="py-0">
+          <div className="text-center mb-16">
+            <h2 className="text-6xl mb-4 font-hanken">Awards & Recognition</h2>
+            <p className="text-slate-500 text-xl">Celebrating excellence in design and community impact.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="bg-ddg-yellow/5 p-10 rounded-[40px] border-2 border-ddg-yellow/20 flex flex-col items-center text-center gap-6"
+            >
+              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg border border-ddg-yellow/30">
+                <Trophy className="text-ddg-yellow" size={40} />
+              </div>
+              <div>
+                <h3 className="text-3xl font-hanken mb-2">Best Overall Design</h3>
+                <p className="text-slate-600">Recognized for outstanding visual identity, user experience, and cohesive product vision.</p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="bg-ddg-blue/5 p-10 rounded-[40px] border-2 border-ddg-blue/20 flex flex-col items-center text-center gap-6"
+            >
+              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg border border-ddg-blue/30">
+                <Trophy className="text-ddg-blue" size={40} />
+              </div>
+              <div>
+                <h3 className="text-3xl font-hanken mb-2">Audience Choice Award</h3>
+                <p className="text-slate-600">Voted as the most impactful and engaging solution by industry professionals and the design community.</p>
+              </div>
+            </motion.div>
+          </div>
         </Section>
       </div>
 
